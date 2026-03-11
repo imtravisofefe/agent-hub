@@ -1,4 +1,4 @@
-#\!/bin/bash
+#!/bin/bash
 set -e
 
 cd /root/agent-hub
@@ -6,8 +6,9 @@ cd /root/agent-hub
 echo "Pulling latest..."
 git pull origin main --ff-only
 
-echo "Installing deps (if changed)..."
-npm ci --prefer-offline 2>/dev/null || npm install
+echo "Installing deps..."
+rm -rf .next
+npm install --prefer-offline
 
 echo "Building..."
 npm run build
